@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import { View } from './components/View';
 
-// getting the values of local storage
+// mengambil nilai dari local storage
 const getDatafromLS=()=>{
   const data = localStorage.getItem('books');
   if(data){
@@ -14,7 +14,7 @@ const getDatafromLS=()=>{
 
 export const App = () => {
 
-  // main array of objects state || books state || books array of objects
+  // main array of objects state || address state || address array of objects
   const [books, setbooks]=useState(getDatafromLS());
 
   // input field states
@@ -25,7 +25,7 @@ export const App = () => {
   // form submit event
   const handleAddBookSubmit=(e)=>{
     e.preventDefault();
-    // creating an object
+    // membuat objek
     let book={
       title,
       author,
@@ -37,7 +37,7 @@ export const App = () => {
     setIsbn('');
   }
 
-  // delete book from LS
+  // Menghapus alamat dari library
   const deleteBook=(isbn)=>{
     const filteredBooks=books.filter((element,index)=>{
       return element.isbn !== isbn
@@ -45,7 +45,7 @@ export const App = () => {
     setbooks(filteredBooks);
   }
 
-  // saving data to local storage
+  // Menyimpan Data ke local storage
   useEffect(()=>{
     localStorage.setItem('books',JSON.stringify(books));
   },[books])
@@ -97,7 +97,7 @@ export const App = () => {
             <button className='btn btn-danger btn-md'
             onClick={()=>setbooks([])}>Remove All</button>
           </>}
-          {books.length < 1 && <div>No books are added yet</div>}
+          {books.length < 1 && <div>No Address are added yet</div>}
         </div>
 
       </div>
